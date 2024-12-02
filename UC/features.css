@@ -1,0 +1,89 @@
+
+/* Features Section */
+.features .card {
+    border: none;
+    transition: transform 0.3s;
+    background-color: #dbad96;
+    
+  }
+  
+  .features .card:hover {
+    transform: translateY(-10px);
+  }
+  .features .card {
+    max-width: 400px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the card within its column */
+  }
+  
+  /* Call to Action Section */
+  .cta-section {
+    background-color: #614caf;
+  }
+  
+  /* Footer */
+  footer {
+    font-size: 0.9rem;
+    background-color: #343a40;
+  }
+  
+  footer a {
+    color: #efa2a2;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  .collapse{
+  nav-right: 350px;
+  }
+  
+  
+  
+  /* About Section */
+  .about-section {
+  background-color: #f8f9fa;
+  }
+  
+  .about-section h2 {
+  color: #343a40;
+  }
+  
+  .about-section p {
+  font-size: 1.1rem;
+  }
+  
+  /* Footer */
+  .footer {
+  background-color: #343a40;
+  color: #aaa;
+  }
+  .unicare{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 38px;
+  }
+  .cta-section{
+  background-color: rgb(165, 50, 27);
+  }
+  .cta-section1 {
+    background-color: rgb(255, 255, 255);
+  }
+  .custom-btn {
+  background-color: #b14814; 
+  border-color: #b14814;     
+  color: white;               
+  }
+  
+  .custom-btn:hover {
+  background-color: #e6946b; 
+  border-color: #e6946b;     
+  }
+  
+  @media(min-width:699px){
+  .hero {
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  }
