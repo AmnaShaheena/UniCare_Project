@@ -1,6 +1,6 @@
 <?php
 // Include database configuration
-require_once '../dbconf/dbconf.php';
+require '../conf/dbconf.php';
 
 $error_message = "";
 
@@ -43,16 +43,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-$conn->close();
+// Close the database connection
+if (isset($conn)) {
+    $conn->close();
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uni Care Sign Up</title>
-    <!-- Bootstrap and Bootstrap Icons CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../style/signup.css">
 </head>
@@ -68,7 +69,6 @@ $conn->close();
     <div class="right">
         <h2>Create an account</h2>
 
-        <!-- Error message -->
         <?php if ($error_message): ?>
             <div id="error-message" class="error-message" style="color: red;">
                 <?= htmlspecialchars($error_message); ?>
