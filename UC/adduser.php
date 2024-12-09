@@ -1,14 +1,37 @@
 <?php
-require_once '../conf/dbconf.php'
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+// Include the database configuration file
+require_once '../conf/dbconf.php';
 
-    $sql = "INSERT INTO users (email, password) VALUES ('$email', '$password')";
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+// Handling form submission
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Fetch and sanitize input
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $password = $_POST['password'];
+
+    // Validate email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Invalid email format.";
+        exit;
     }
+
+    // Hash the password securely
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Use prepared statements to prevent SQL injection
+    $stmt = $conn->prepare("INSERT INTO users (email, password) VALUES (?, ?)");
+    $stmt->bind_param("ss", $email, $hashed_password);
+
+    // Execute and check if the insertion was successful
+    if ($stmt->execute()) {
+        echo "User registered successfully!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    // Close the statement
+   // $stmt->close();
 }
+
+// Close the database connection
+$conn->close();
 ?>

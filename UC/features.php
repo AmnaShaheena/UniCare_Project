@@ -9,8 +9,8 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="features.css">
-    <link rel="stylesheet" href="profilestyle.css">
+    <link rel="stylesheet" href="../style/features.css">
+    <link rel="stylesheet" href="../style/profilestyle.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -130,6 +130,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- JavaScript to Set User Email -->
-    <script src="profilescript.js"></script>
+    <script src="../script/profilescript.js"></script>
 </body>
 </html>
