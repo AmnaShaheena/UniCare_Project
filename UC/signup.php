@@ -1,6 +1,6 @@
 <?php
 // Include database configuration
-require 'dbconf.php';
+require_once '../dbconf/dbconf.php';
 
 $error_message = "";
 
