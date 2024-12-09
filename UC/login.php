@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uni Care Sign Up</title>
+    <title>Uni Care Sign In</title>
     <!-- Bootstrap and Bootstrap Icons CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #b14814; /* Background color */
+            background-color: #b14814;
         }
         .container {
             display: flex;
@@ -26,7 +26,7 @@
             overflow: hidden;
         }
         .left {
-            background-color: #000000; /* Logo background color */
+            background-color: #000000;
             color: white;
             width: 40%;
             display: flex;
@@ -76,45 +76,26 @@
             cursor: pointer;
             color: #888;
         }
-        .signup-button {
-            width: auto; /* Adjust width to fit content */
-            padding: 12px 40px; /* Smaller padding for a more compact button */
+        .signin-button {
+            width: auto;
+            padding: 12px 40px;
             font-size: 1.2em;
             background-color: #f2a357;
             color: white;
             border: none;
-            border-radius: 50px; /* Makes it oval-shaped */
+            border-radius: 50px;
             cursor: pointer;
             margin-top: 10px;
             display: block;
             margin-left: auto;
             margin-right: auto;
         }
-        .signup-button:disabled {
+
+        .signin-button:disabled {
             background-color: #e0e0e0;
             cursor: not-allowed;
         }
 
-        .divider {
-            margin: 20px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .divider span {
-            background-color: white;
-            padding: 0 10px;
-            font-weight: bold;
-        }
-        .divider::before,
-        .divider::after {
-            content: "";
-            flex-grow: 1;
-            border-top: 2px solid #ccc;
-        }
-        .unicare {
-            font-size: 40px;
-        }
         .social-buttons {
             display: flex;
             justify-content: space-between;
@@ -139,17 +120,35 @@
         .google {
             background-color: #db4437;
         }
-
-        .login-link {
+        .signup-link {
             text-align: center;
             margin-top: 20px;
             font-size: 0.9em;
         }
-        .login-link a {
+        .signup-link a {
             color: #57bef2;
             text-decoration: none;
         }
-
+        .unicare {
+            font-size: 40px;
+        }
+        .divider {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .divider span {
+            background-color: white;
+            padding: 0 10px;
+            font-weight: bold;
+        }
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex-grow: 1;
+            border-top: 2px solid #ccc;
+        }
         .error-message {
             display: none;
             background-color: #f44336;
@@ -159,15 +158,14 @@
             margin-bottom: 20px;
             border-radius: 4px;
         }
-
         @media (max-width: 1024px) {
             .container {
-                flex-direction: column; /* Stack columns on smaller screens */
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
             }
             .left {
-                width: 100%; /* Take full width for smaller screens */
+                width: 100%;
                 max-width: 100%;
                 padding: 20px 0;
             }
@@ -176,40 +174,6 @@
                 text-align: center;
             }
         }
-
-        @media (max-width: 768px) {
-            .signup-button,
-            .social-buttons button {
-                padding: 12px;
-                font-size: 1em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .left h1 {
-                font-size: 1em;
-            }
-            .right h2 {
-                font-size: 30px;
-            }
-            .form-group input[type="email"],
-            .form-group input[type="password"] {
-                padding: 8px;
-                font-size: 0.9em;
-            }
-            .signup-button,
-            .social-buttons button {
-                padding: 10px;
-                font-size: 0.9em;
-            }
-            .login-link {
-                font-size: 0.8em;
-            }
-            .unicare {
-                font-size: 10px; /* Reduced font size for smaller screens */
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -222,26 +186,21 @@
         <strong class="unicare">UniCare</strong>
     </div>
     <div class="right">
-        <h2>Create an account</h2>
+        <h2>Sign in</h2>
 
-        <!-- Error message -->
-        <div id="error-message" class="error-message">This email is already registered. Please use a different one.</div>
+        <div id="error-message" class="error-message">Incorrect email or password. Please try again.</div>
 
-        <form onsubmit="registerUser(event)">
+        <form onsubmit="loginUser(event)">
             <div class="form-group">
                 <label for="email">Email address</label>
                 <input type="email" id="email" placeholder="Enter your email address">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Create a password">
+                <input type="password" id="password" placeholder="Enter your password">
                 <i class="fas fa-eye show-password" onclick="togglePassword()"></i>
             </div>
-            <div class="form-group">
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" placeholder="Confirm your password">
-            </div>
-            <button type="submit" class="signup-button" disabled>Create account</button>
+            <button type="submit" class="signin-button" disabled>Sign in</button>
         </form>
 
         <div class="divider">
@@ -254,8 +213,9 @@
             <button class="google"><i class="bi bi-google"></i>   Google</button>
         </div>
 
-        <div class="login-link">
-            <p>Already have an account? <a href="login.html" class="text-warning">Sign In</a></p>
+        <div class="signup-link">
+            <p>Don't have an account? <a href="signup.php" class="text-warning">Sign up</a></p>
+            <p><a href="reset.php" class="text-muted">Forgotten password?</a></p>
         </div>
     </div>
 </div>
@@ -263,60 +223,51 @@
 <script>
     function togglePassword() {
         const passwordField = document.getElementById('password');
-        const confirmPasswordField = document.getElementById('confirm-password');
         const showPasswordText = document.querySelector('.show-password');
         if (passwordField.type === 'password') {
             passwordField.type = 'text';
-            confirmPasswordField.type = 'text';
             showPasswordText.textContent = 'Hide';
         } else {
             passwordField.type = 'password';
-            confirmPasswordField.type = 'password';
             showPasswordText.textContent = 'Show';
         }
     }
 
     document.getElementById('email').addEventListener('input', toggleButton);
     document.getElementById('password').addEventListener('input', toggleButton);
-    document.getElementById('confirm-password').addEventListener('input', toggleButton);
 
     function toggleButton() {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirm-password').value;
-        document.querySelector('.signup-button').disabled = !(email && password && confirmPassword);
+        document.querySelector('.signin-button').disabled = !(email && password);
     }
 
-    function registerUser(event) {
+    function loginUser(event) {
         event.preventDefault();
 
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirm-password').value;
+        const storedEmails = JSON.parse(localStorage.getItem('userEmails')) || [];
+        const storedPassword = localStorage.getItem('userPassword');
         const errorMessage = document.getElementById('error-message');
 
-        let existingEmails = JSON.parse(localStorage.getItem('userEmails')) || [];
-
-        if (existingEmails.includes(email)) {
+        // Check if the email exists in the stored list of emails
+        if (storedEmails.includes(email)) {
+            // Check if the entered password matches the stored password for the registered email
+            if (storedPassword === password) {
+                errorMessage.style.display = 'none';
+                localStorage.setItem('userEmail', email); // Save email to display on home page
+                window.location.href = 'home.html';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        } else {
             errorMessage.style.display = 'block';
-            return;
         }
-
-        if (password !== confirmPassword) {
-            alert("Passwords do not match!");
-            return;
-        }
-
-        existingEmails.push(email);
-        localStorage.setItem('userEmails', JSON.stringify(existingEmails));
-        localStorage.setItem('userPassword', password);
-
-        alert("Account created successfully! Please log in.");
-        window.location.href = 'login.html';
     }
 </script>
-
-
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
