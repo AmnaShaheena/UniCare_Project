@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../style/header.css">
 </head>
 <body>
-    <?php include '../common/header.html'; ?>
+    <?php include '../common/header.php'; ?>
 
      <!-- Features Section -->
   <section class="features py-5">
@@ -73,7 +73,7 @@
   </div>
 </section>
    <!-- Footer -->
-   <?php include '../common/footer.html'; ?>
+   <?php include '../common/footer.php'; ?>
 
     <!-- Bootstrap Bundle with Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

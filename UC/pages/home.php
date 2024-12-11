@@ -15,7 +15,7 @@
    
 </head>
 <body>
-    <?php include '../common/header.html'; ?>
+    <?php include '../common/header.php'; ?>
 
     <!-- Hero Section -->
     <section class="hero bg-light text-center text-white d-flex justify-content-center align-items-center">
@@ -30,7 +30,7 @@
     </div>
     </section>
     <!-- Footer -->
-    <?php include '../common/footer.html'; ?>
+    <?php include '../common/footer.php'; ?>
 
     <!-- Bootstrap Bundle with Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
