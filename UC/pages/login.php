@@ -6,14 +6,14 @@
     <title>Uni Care Sign In</title>
     <!-- Bootstrap and Bootstrap Icons CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="../style/login.css">
+    <link rel="stylesheet" href="../../style/login.css">
 </head>
 <body>
 
 <div class="container">
     <div class="left">
         <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="../images/UClogo.png" width="200" height="200" alt="UniCare Logo" class="me-2">      
+            <img src="../../images/UClogo.png" width="200" height="200" alt="UniCare Logo" class="me-2">      
         </a>
         <strong class="unicare">UniCare</strong>
     </div>

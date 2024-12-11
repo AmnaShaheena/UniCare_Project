@@ -55,14 +55,14 @@ if (isset($conn)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uni Care Sign Up</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="../style/signup.css">
+    <link rel="stylesheet" href="../../style/signup.css">
 </head>
 <body>
 
 <div class="container">
     <div class="left">
         <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="../images/UClogo.png" width="200" height="200" alt="UniCare Logo" class="me-2">      
+            <img src="../../images/UClogo.png" width="200" height="200" alt="UniCare Logo" class="me-2">      
         </a>
         <strong class="unicare">UniCare</strong>
     </div>
