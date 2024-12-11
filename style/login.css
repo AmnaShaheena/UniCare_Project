@@ -87,41 +87,6 @@ body {
     cursor: not-allowed;
 }
 
-.social-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.social-buttons button {
-    flex: 1;
-    padding: 10px;
-    font-size: 1em;
-    margin: 0 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: white; /* White background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.social-buttons button i {
-    margin-right: 8px; /* Space between icon and text */
-}
-
-.apple i {
-    color: black;
-}
-
-.facebook i {
-    color: #3b5998; 
-}
-
-.google i {
-    color: #db4437; 
-}
 
 .signup-link {
     text-align: center;
@@ -176,4 +141,39 @@ body {
         padding: 20px;
         text-align: center;
     }
+}
+.social-buttons {
+display: flex;
+justify-content: space-between;
+margin-top: 20px;
+}
+
+.social-buttons button {
+flex: 1;
+padding: 10px;
+font-size: 1em;
+margin: 0 5px;
+border: 1px solid #ccc;
+border-radius: 4px;
+cursor: pointer;
+background-color: white; /* White background */
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.social-buttons button i {
+margin-right: 8px; /* Space between icon and text */
+}
+
+.apple i {
+color: black; /* Apple logo color */
+}
+
+.facebook i {
+color: #3b5998; /* Facebook logo color */
+}
+
+.google i {
+color: #db4437; /* Google logo color */
 }
