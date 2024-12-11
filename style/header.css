@@ -1,0 +1,57 @@
+/* Profile Dropdown */
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .profile-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .profile-icon {
+  
+    border-radius: 50%;
+  
+    font-size: 1.25rem; /* Adjust icon size */
+    /* Example color for the icon */
+    vertical-align: middle;
+  }
+  
+  .dropdown-menu {
+    min-width: 200px;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .dropdown-header {
+    font-weight: bold;
+    color: #fff;
+    background-color: #5c5b6a;
+    text-align: center;
+  }
+  
+  .dropdown-menu .dropdown-header {
+    color: #fbfafa;
+    font-weight: bold;
+  }
+  .logout-btn {
+    background-color: #ff6347; /* Tomato color for logout button */
+    color: rgb(0, 0, 0);
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+  .logout-btn:hover {
+    background-color: #d9534f; /* Darker shade on hover */
+  }
+  .unicare{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 38px;
+  }
