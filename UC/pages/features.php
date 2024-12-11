@@ -9,11 +9,11 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../style/features.css">
-    <link rel="stylesheet" href="../style/header.css">
+    <link rel="stylesheet" href="../../style/features.css">
+    <link rel="stylesheet" href="../../style/header.css">
 </head>
 <body>
-    <?php include '../header.html'; ?>
+    <?php include '../common/header.html'; ?>
 
      <!-- Features Section -->
   <section class="features py-5">
@@ -73,7 +73,7 @@
   </div>
 </section>
    <!-- Footer -->
-   <?php include '../footer.html'; ?>
+   <?php include '../common/footer.html'; ?>
 
     <!-- Bootstrap Bundle with Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
