@@ -92,25 +92,37 @@ body {
     justify-content: space-between;
     margin-top: 20px;
 }
+
 .social-buttons button {
     flex: 1;
     padding: 10px;
     font-size: 1em;
     margin: 0 5px;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
-    color: white;
+    background-color: white; /* White background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.apple {
-    background-color: black;
+
+.social-buttons button i {
+    margin-right: 8px; /* Space between icon and text */
 }
-.facebook {
-    background-color: #3b5998;
+
+.apple i {
+    color: black;
 }
-.google {
-    background-color: #db4437;
+
+.facebook i {
+    color: #3b5998; 
 }
+
+.google i {
+    color: #db4437; 
+}
+
 .signup-link {
     text-align: center;
     margin-top: 20px;
