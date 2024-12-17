@@ -1,10 +1,49 @@
+<?php
+// Start the session
+session_start();
+
+// Include the database connection
+include '../../conf/dbconf.php';
+
+// Initialize variables for form data and error message
+$email = $password = "";
+$error_message = "";
+
+// Handle the form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get and sanitize form data
+    $email = mysqli_real_escape_string($connect, $_POST['email']);
+    $password = mysqli_real_escape_string($connect, $_POST['password']);
+
+    // Check if the email exists in the database
+    $sql = "SELECT * FROM users WHERE email = '$email'";
+    $result = mysqli_query($connect, $sql);
+    
+    if (mysqli_num_rows($result) > 0) {
+        // Fetch the user data
+        $row = mysqli_fetch_assoc($result);
+        
+        // Check if the entered password matches the stored password (hashed password)
+        if (password_verify($password, $row['password'])) {
+            // Store the user's email in the session
+            $_SESSION['userEmail'] = $email;
+            header('Location: home.php'); // Redirect to the home page after successful login
+            exit();
+        } else {
+            $error_message = "Incorrect password. Please try again.";
+        }
+    } else {
+        $error_message = "Email not found. Please try again.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uni Care Sign In</title>
-    <!-- Bootstrap and Bootstrap Icons CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../../style/login.css">
 </head>
@@ -20,19 +59,21 @@
     <div class="right">
         <h2>Sign in</h2>
 
-        <div id="error-message" class="error-message">Incorrect email or password. Please try again.</div>
+        <!-- Display error message if login fails -->
+        <?php if (!empty($error_message)): ?>
+            <div id="error-message" class="error-message"><?php echo $error_message; ?></div>
+        <?php endif; ?>
 
-        <form onsubmit="loginUser(event)">
+        <form action="login.php" method="POST">
             <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="email" id="email" placeholder="Enter your email address">
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter your password">
-                <i class="fas fa-eye show-password" onclick="togglePassword()"></i>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
-            <button type="submit" class="signin-button" disabled>Sign in</button>
+            <button type="submit" class="signin-button">Sign in</button>
         </form>
 
         <div class="divider">
@@ -52,53 +93,6 @@
     </div>
 </div>
 
-<script>
-    function togglePassword() {
-        const passwordField = document.getElementById('password');
-        const showPasswordText = document.querySelector('.show-password');
-        if (passwordField.type === 'password') {
-            passwordField.type = 'text';
-            showPasswordText.textContent = 'Hide';
-        } else {
-            passwordField.type = 'password';
-            showPasswordText.textContent = 'Show';
-        }
-    }
-
-    document.getElementById('email').addEventListener('input', toggleButton);
-    document.getElementById('password').addEventListener('input', toggleButton);
-
-    function toggleButton() {
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        document.querySelector('.signin-button').disabled = !(email && password);
-    }
-
-    function loginUser(event) {
-        event.preventDefault();
-
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const storedEmails = JSON.parse(localStorage.getItem('userEmails')) || [];
-        const storedPassword = localStorage.getItem('userPassword');
-        const errorMessage = document.getElementById('error-message');
-
-        // Check if the email exists in the stored list of emails
-        if (storedEmails.includes(email)) {
-            // Check if the entered password matches the stored password for the registered email
-            if (storedPassword === password) {
-                errorMessage.style.display = 'none';
-                localStorage.setItem('userEmail', email); // Save email to display on home page
-                window.location.href = 'home.html';
-            } else {
-                errorMessage.style.display = 'block';
-            }
-        } else {
-            errorMessage.style.display = 'block';
-        }
-    }
-</script>
-<script src="js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
