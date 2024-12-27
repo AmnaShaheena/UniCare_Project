@@ -1,3 +1,11 @@
+<?php
+// Start the session
+session_start();
+
+// Retrieve the email from the session
+$userEmail = isset($_SESSION['userEmail']) ? $_SESSION['userEmail'] : "No email available";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +17,6 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <!-- Custom CSS -->
-
     <link rel="stylesheet" href="../../style/header.css">
 </head>
 <body>
@@ -42,10 +49,14 @@
                         </a>
                         <!-- Dropdown Menu -->
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                            <li class="dropdown-header text-center" id="userEmail">User Email</li>
+                            <li class="dropdown-header text-center" id="userEmail">
+                                <?php echo htmlspecialchars($userEmail); ?>
+                            </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                <a href="#" class="dropdown-item logout-btn" onclick="logout()">Logout</a>
+                                <a href="../pages/login.php" class="dropdown-item logout-btn">
+                                    <i class="bi bi-box-arrow-right me-2"></i> Logout
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -54,11 +65,7 @@
         </div>
     </nav>
 
-
-<!-- Bootstrap Bundle with Popper.js -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- JavaScript to Set User Email -->
-<script src="profilescript.js"></script>
+    <!-- Bootstrap Bundle with Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
