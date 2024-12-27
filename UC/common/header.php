@@ -3,7 +3,7 @@
 session_start();
 
 // Retrieve the email from the session
-$userEmail = isset($_SESSION['userEmail']) ? $_SESSION['userEmail'] : "No email available";
+$userEmail = isset($_SESSION['email']) ? $_SESSION['email'] : "No email available";
 ?>
 
 <!DOCTYPE html>

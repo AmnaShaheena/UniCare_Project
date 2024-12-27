@@ -1,4 +1,43 @@
+<?php
+// Start the session
+session_start();
 
+// Include the database connection
+include '../../conf/dbconf.php';
+
+// Initialize variables for form data
+$email = $password = "";
+
+// Handle the form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get and sanitize form data
+    $email = mysqli_real_escape_string($connect, $_POST['email']);
+    $password = mysqli_real_escape_string($connect, $_POST['password']);
+
+    // Check if the email exists in the database
+    $sql = "SELECT * FROM users WHERE email = '$email'";
+    $result = mysqli_query($connect, $sql);
+    
+    if (mysqli_num_rows($result) > 0) {
+        // Fetch the user data
+        $row = mysqli_fetch_assoc($result);
+        
+        // Check if the entered password matches the stored password (hashed password)
+        if (password_verify($password, $row['password'])) {
+            // Store the user's email in the session
+            $_SESSION['userEmail'] = $email;
+            header('Location: home.php'); // Redirect to the home page after successful login
+            exit();
+        } else {
+            // Password incorrect
+            echo "<script>alert('Incorrect password. Please try again.'); window.location.href='login.php';</script>";
+        }
+    } else {
+        // Email not found
+        echo "<script>alert('Email not found. Please try again.'); window.location.href='login.php';</script>";
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,43 +99,4 @@
 
 </body>
 </html>
-<?php
-// Start the session
-session_start();
 
-// Include the database connection
-include '../../conf/dbconf.php';
-
-// Initialize variables for form data
-$email = $password = "";
-
-// Handle the form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get and sanitize form data
-    $email = mysqli_real_escape_string($connect, $_POST['email']);
-    $password = mysqli_real_escape_string($connect, $_POST['password']);
-
-    // Check if the email exists in the database
-    $sql = "SELECT * FROM users WHERE email = '$email'";
-    $result = mysqli_query($connect, $sql);
-    
-    if (mysqli_num_rows($result) > 0) {
-        // Fetch the user data
-        $row = mysqli_fetch_assoc($result);
-        
-        // Check if the entered password matches the stored password (hashed password)
-        if (password_verify($password, $row['password'])) {
-            // Store the user's email in the session
-            $_SESSION['userEmail'] = $email;
-            header('Location: home.php'); // Redirect to the home page after successful login
-            exit();
-        } else {
-            // Password incorrect
-            echo "<script>alert('Incorrect password. Please try again.'); window.location.href='login.php';</script>";
-        }
-    } else {
-        // Email not found
-        echo "<script>alert('Email not found. Please try again.'); window.location.href='login.php';</script>";
-    }
-}
-?>
