@@ -12,6 +12,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../style/features.css">
     <link rel="stylesheet" href="../../style/header.css">
+    <link rel="stylesheet" href="../../style/footer.css">
 </head>
 <body>
     <?php include '../common/header.php'; ?>
