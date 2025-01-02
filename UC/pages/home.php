@@ -1,3 +1,4 @@
+<?php include '../common/sessionstart.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
     <!-- Hero Section -->
     <section class="hero bg-light text-center text-white d-flex justify-content-center align-items-center">
         <div class="container">
-            <h1 class="display-4"><strong>Welcome to UniCare</strong></h1>
+            <h1 class="display-4"><strong>Welcome tfdhdfhdo UniCare</strong></h1>
             <p class="lead">Your One-Stop Solution for University Support and Academic Management</p>
         </div>
     </section>

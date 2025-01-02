@@ -1,6 +1,6 @@
+
 <?php
-// Start the session
-session_start();
+include '../common/sessionstart.php';
 
 // Check if the form has been submitted for downloading the letter
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['letterContent'])) {

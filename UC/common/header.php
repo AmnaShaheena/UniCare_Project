@@ -1,10 +1,4 @@
-<?php
-// Start the session
-session_start();
 
-// Retrieve the email from the session
-$userEmail = isset($_SESSION['email']) ? $_SESSION['email'] : "No email available";
-?>
 
 <!DOCTYPE html>
 <html lang="en">
