@@ -69,7 +69,7 @@
         </div>
     </div>
 </section>
-<section class="cta-section1 text-white py-5" >
+<section class="cta-section1 text-white py-3" >
   <div class="container text-center">
   </div>
 </section>

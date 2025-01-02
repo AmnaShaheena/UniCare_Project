@@ -19,19 +19,21 @@
     <?php include '../common/header.php'; ?>
 
     <!-- Hero Section -->
-    <section class="hero bg-light text-center text-white d-flex justify-content-center align-items-center">
+    <section class="hero bg-light text-center text-white d-flex justify-content-center align-items-center" style="height: 70vh">
         <div class="container">
-            <h1 class="display-4"><strong>Welcome tfdhdfhdo UniCare</strong></h1>
+            <h1 class="display-4"><strong>Welcome to UniCare</strong></h1>
             <p class="lead">Your One-Stop Solution for University Support and Academic Management</p>
         </div>
     </section>
     
-    <section class="cta-section1 text-white py-5" >
-    <div class="container text-center">
-    </div>
-    </section>
+    <section class="cta-section1 text-white py-3" >
+  <div class="container text-center">
+  </div>
+</section>
+    
     <!-- Footer -->
     <?php include '../common/footer.php'; ?>
+
 
     <!-- Bootstrap Bundle with Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -3,27 +3,28 @@
   nav-right: 350px;
  }
  /* Overlay Styling */
-.hero {
-  position: relative;
-  height: 120vh; 
+ .hero {
+  height: 700px !important;
 }
 .hero h1{
   font-size: 70px;
 }
-/* Hero Section */
 .hero {
+  position: relative;
+  min-height: 500px; /* Minimum height is set, but it can grow */
   background: linear-gradient(rgba(97, 95, 95, 0.5), rgba(116, 116, 116, 0.5)),
       url('../images/vavu-uni.png') no-repeat center center/cover;
-  height: 500px; /* Increase the height */
   display: flex;
   align-items: center;
   color: white;
 }
-@media(min-width:699px){
+
+
+@media(min-width: 699px) {
   .hero {
-    height: 50vh;
+    height: 70vh; /* Adjust height for larger screens */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
+  }
 }
