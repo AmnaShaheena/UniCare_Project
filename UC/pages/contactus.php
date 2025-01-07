@@ -1,29 +1,72 @@
+<?php
+// Include the database connection file
+include '../../conf/dbconf.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get the form data
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+
+    // Sanitize the inputs
+    $name = htmlspecialchars($name);
+    $email = htmlspecialchars($email);
+    $message = htmlspecialchars($message);
+
+    // Prepare SQL query to insert into the database
+    $sql = "INSERT INTO contact_us (email, name, message) VALUES (?, ?, ?)";
+    if ($stmt = $connect->prepare($sql)) {
+        // Bind parameters to the SQL query
+        $stmt->bind_param("sss", $email, $name, $message);
+
+        // Execute the query
+        if ($stmt->execute()) {
+            echo "<script>alert('Message sent successfully!');</script>";
+        } else {
+            echo "<script>alert('There was an error, please try again later.');</script>";
+        }
+
+        // Close the statement
+        $stmt->close();
+    }
+
+    // Close the database connection
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us</title>
-  
+  <link rel="stylesheet" href="../../style/contactus.css">
+  <link rel="stylesheet" href="../../style/header.css">
+  <link rel="stylesheet" href="../../style/footer.css">
 </head>
 <body>
+<?php include '../common/header.php'; ?>
+
   <div class="contact-container">
-    <h1>Contact us</h1>
-    <form>
+    <h1>Contact Us</h1>
+    <form method="POST" action="">
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name">
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email">
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
       </div>
       <div class="form-group">
         <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Write your message"></textarea>
+        <textarea id="message" name="message" placeholder="Write your message" required></textarea>
       </div>
       <button type="submit" class="send-button">Send Message</button>
     </form>
   </div>
+
+<?php include '../common/footer.php'; ?>
 </body>
 </html>
