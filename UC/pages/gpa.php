@@ -1,39 +1,4 @@
-<?php
-if (isset($_POST['calculate'])) {
-    $grades = $_POST['grades'];
-    $credits = $_POST['credits'];
-
-    // GPA Calculation
-    $totalGradePoints = 0;
-    $totalCredits = 0;
-
-    for ($i = 0; $i < count($grades); $i++) {
-        $grade = $grades[$i];
-        $credit = $credits[$i];
-
-        // Define GPA Scale (A=4, B=3, C=2, D=1, F=0)
-        $gradePoint = 0;
-        if ($grade >= 90) {
-            $gradePoint = 4.0;
-        } elseif ($grade >= 80) {
-            $gradePoint = 3.0;
-        } elseif ($grade >= 70) {
-            $gradePoint = 2.0;
-        } elseif ($grade >= 60) {
-            $gradePoint = 1.0;
-        } else {
-            $gradePoint = 0.0;
-        }
-
-        $totalGradePoints += $gradePoint * $credit;
-        $totalCredits += $credit;
-    }
-
-    // GPA = Total Grade Points / Total Credits
-    $gpa = $totalGradePoints / $totalCredits;
-    $gpa = round($gpa, 2);
-}
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,125 +6,188 @@ if (isset($_POST['calculate'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPA Calculator</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../style/header.css">
-    <link rel="stylesheet" href="../../style/footer.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #f3f4f6;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        .container {
-            margin-top: 50px;
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 400px;
-        }
-
-        .title {
-            font-size: 28px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #0044cc;
-        }
-
-        .form-control {
-            border-radius: 10px;
-        }
-
-        .btn-primary {
+        header, footer {
             background-color: #007bff;
-            border-color: #0062cc;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-
-        .calculator-button {
-            width: 100%;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
-
-        .result {
-            background-color: #e1f5fe;
-            padding: 20px;
-            margin-top: 30px;
+            color: white;
             text-align: center;
+            padding: 15px 0;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .calculator {
+            background: #ffffff;
+            padding: 20px;
             border-radius: 10px;
-            font-size: 1.5rem;
-            color: #0288d1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #343a40;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        .grade-input {
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, select {
             width: 100%;
-            margin-top: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #28a745;
+            margin-top: 20px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
+    <?php include '../common/header.php'; ?>
 
-<?php include '../common/header.php'; ?>
-
-<div class="container">
-    <h2 class="title">GPA Calculator</h2>
-
-    <!-- GPA Calculator Form -->
-    <form method="POST" action="">
-        <div class="form-group">
-            <label for="numSubjects">Number of Subjects</label>
-            <input type="number" class="form-control" id="numSubjects" name="numSubjects" required min="1">
-        </div>
-
-        <!-- Dynamic Subject and Grade Inputs -->
-        <div id="subjects-container"></div>
-
-        <button type="submit" class="btn btn-primary calculator-button" name="calculate">Calculate GPA</button>
-    </form>
-
-    <?php if (isset($gpa)): ?>
-        <div class="result">
-            <strong>Your GPA is: <?php echo $gpa; ?></strong>
-        </div>
-    <?php endif; ?>
-</div>
-
-<!-- Bootstrap JS and custom JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    document.getElementById("numSubjects").addEventListener("input", function() {
-        const numSubjects = parseInt(this.value);
-        const container = document.getElementById("subjects-container");
-        container.innerHTML = "";
-
-        // Dynamically create the grade and credit input fields for each subject
-        for (let i = 0; i < numSubjects; i++) {
-            container.innerHTML += `
+    <main>
+        <div class="calculator">
+            <h1>GPA Calculator</h1>
+            <form method="POST">
                 <div class="form-group">
-                    <label for="grade${i}" class="form-label">Grade for Subject ${i + 1}</label>
-                    <input type="number" class="form-control grade-input" id="grade${i}" name="grades[]" required min="0" max="100">
+                    <label for="subject-name">Subject Name:</label>
+                    <input type="text" name="subject_name" id="subject-name" placeholder="Enter subject name" required>
                 </div>
+
                 <div class="form-group">
-                    <label for="credit${i}" class="form-label">Credits for Subject ${i + 1}</label>
-                    <input type="number" class="form-control grade-input" id="credit${i}" name="credits[]" required min="1">
+                    <label for="grade">Grade (e.g., A, B+, C):</label>
+                    <select name="grade" id="grade" required>
+                        <option value="4">A+</option>
+                        <option value="4">A</option>
+                        <option value="3.7">A-</option>
+                        <option value="3.3">B+</option>
+                        <option value="3">B</option>
+                        <option value="2.7">B-</option>
+                        <option value="2.3">C+</option>
+                        <option value="2">C</option>
+                        <option value="1.7">C-</option>
+                        <option value="1.3">D+</option>
+                        <option value="1">D</option>
+                        <option value="0">E</option>
+                    </select>
                 </div>
-            `;
-        }
-    });
-</script>
 
-<?php include '../common/footer.php'; ?>
+                <div class="form-group">
+                    <label for="credits">Credits:</label>
+                    <input type="number" name="credits" id="credits" min="1" placeholder="Enter course credits" required>
+                </div>
 
+                <button type="submit" name="add_course">Add Course</button>
+            </form>
+
+            <?php
+            
+
+            if (!isset($_SESSION['courses'])) {
+                $_SESSION['courses'] = [];
+            }
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_course'])) {
+                $subject_name = htmlspecialchars($_POST['subject_name']);
+                $grade = floatval($_POST['grade']);
+                $credits = intval($_POST['credits']);
+
+                // Add course to the session
+                $_SESSION['courses'][] = [
+                    'subject_name' => $subject_name,
+                    'grade' => $grade,
+                    'credits' => $credits,
+                ];
+            }
+
+            if (!empty($_SESSION['courses'])) {
+                echo '<div class="form-group"><h2>Courses:</h2><ul>';
+                foreach ($_SESSION['courses'] as $course) {
+                    echo '<li>Subject: ' . $course['subject_name'] . ', Grade: ' . $course['grade'] . ', Credits: ' . $course['credits'] . '</li>';
+                }
+                echo '</ul></div>';
+                echo '<form method="POST"><button type="submit" name="calculate_gpa">Calculate GPA</button></form>';
+            }
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['calculate_gpa'])) {
+                $total_credits = 0;
+                $total_grade_points = 0;
+
+                foreach ($_SESSION['courses'] as $course) {
+                    $total_credits += $course['credits'];
+                    $total_grade_points += $course['grade'] * $course['credits'];
+                }
+
+                $gpa = $total_credits > 0 ? $total_grade_points / $total_credits : 0;
+                echo '<div class="result">Your GPA is: ' . number_format($gpa, 2) . '</div>';
+            }
+            ?>
+        </div>
+    </main>
+
+   
+        <?php include '../common/footer.php'; ?>
+    
 </body>
 </html>
