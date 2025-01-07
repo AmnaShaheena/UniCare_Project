@@ -33,9 +33,12 @@
                         <a class="nav-link active" href="../pages/home.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../pages/features.php">Features</a>
+                        <a class="nav-link active" href="../pages/features.php">Features</a>
                     </li>
                     
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../pages/contact.php">Contact Us</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <!-- Profile Dropdown Button -->
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
