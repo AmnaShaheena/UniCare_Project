@@ -55,7 +55,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Emergency Assistance</h5>
                     <p class="card-text">Quick access to emergency contacts for campus security and health services.</p>
-                    <a href="emergency.html" class="btn custom-btn">Get Help</a>
+                    <a href="emass.php" class="btn custom-btn">Get Help</a>
                 </div>
             </div>
         </div>
