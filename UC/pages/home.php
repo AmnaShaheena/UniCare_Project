@@ -16,7 +16,7 @@
    
 </head>
 <body>
-    <?php include '../common/header.php'; ?>
+    <?php include '../common/headerhm.php'; ?>
 
     <!-- Hero Section -->
     <section class="hero bg-light text-center text-white d-flex justify-content-center align-items-center" style="height: 70vh">

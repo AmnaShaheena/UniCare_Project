@@ -1,4 +1,6 @@
-<?php include '../common/sessionstart.php'; ?>
+<?php
+include '../common/sessionstart.php'; // Make sure this is before any HTML
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

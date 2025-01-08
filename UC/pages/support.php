@@ -54,11 +54,8 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">UniCare</a>
-        </div>
-    </nav>
+<?php include '../common/header.php'; ?>
+   
 
     <div class="container mt-5">
         <!-- Page Header -->
@@ -105,7 +102,8 @@
     </div>
 
     <footer class="bg-white text-white text-center py-5"> </footer>
-    <?php include '../common/footer.php'; ?>
+    <footer class="bg-white text-white text-center py-4"> </footer>
+  <?php include '../common/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

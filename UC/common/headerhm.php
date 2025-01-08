@@ -39,7 +39,24 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="../pages/contactus.php">Contact Us</a>
                     </li>
-                    
+                    <li class="nav-item dropdown">
+                        <!-- Profile Dropdown Button -->
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle profile-icon"></i>
+                        </a>
+                        <!-- Dropdown Menu -->
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                            <li class="dropdown-header text-center" id="userEmail">
+                                <?php echo htmlspecialchars($userEmail); ?>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a href="../pages/login.php" class="dropdown-item logout-btn">
+                                    <i class="bi bi-box-arrow-right me-2"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
