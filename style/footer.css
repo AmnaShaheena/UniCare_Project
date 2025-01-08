@@ -25,3 +25,24 @@ footer {
         background-color: rgb(165, 50, 27);
         height: 20px;
     }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+    
+    .contact-container {
+        min-height: calc(100vh - 100px); /* Adjust 100px to the height of your header and footer combined */
+        display: flex;
+        flex-direction: column;
+    }
+    
+    footer {
+        margin-top: auto;
+        background-color: #333; /* Adjust color as needed */
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+    }
+    

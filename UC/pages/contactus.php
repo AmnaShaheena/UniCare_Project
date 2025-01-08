@@ -44,6 +44,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <link rel="stylesheet" href="../../style/contactus.css">
   <link rel="stylesheet" href="../../style/header.css">
   <link rel="stylesheet" href="../../style/footer.css">
+  <style>
+    /* Ensure full height of the page */
+    .contact-container {
+    min-height: calc(100vh - 100px); /* Adjust 100px to match the header and footer height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 90%; /* Increased width */
+    margin: 0 auto;
+    max-width: 1200px; /* Optional: Max width for large screens */
+}
+
+form {
+    width: 100%; /* Take the full width of the container */
+    max-width: 800px; /* Optional: Restrict to a maximum width */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%; /* Ensure inputs and textareas span the full width of the form */
+    padding: 12px; /* Add padding for better usability */
+    font-size: 16px; /* Increase font size for readability */
+}
+
+.send-button {
+    width: 100%; /* Make the button span the full width */
+    max-width: 200px; /* Optional: Restrict button width */
+    margin-top: 10px; /* Add spacing above the button */
+}
+
+  </style>
 </head>
 <body>
 <?php include '../common/header.php'; ?>
@@ -67,6 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
   </div>
 
-<?php include '../common/footer.php'; ?>
+  <footer>
+  <?php include '../common/footer.php'; ?>
+  </footer>
 </body>
 </html>
