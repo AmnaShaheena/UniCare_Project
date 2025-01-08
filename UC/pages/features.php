@@ -44,7 +44,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Scholarship Guidance</h5>
                     <p class="card-text">Explore scholarship opportunities with eligibility, deadlines, and details.</p>
-                    <a href="scholarships.php" class="btn custom-btn">View Scholarships</a>
+                    <a href="scholarship.php" class="btn custom-btn">View Scholarships</a>
                 </div>
             </div>
         </div>

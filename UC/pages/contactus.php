@@ -100,8 +100,8 @@ form {
     </form>
   </div>
 
-  <footer>
+  <footer class="bg-white text-white text-center py-5"> </footer>
   <?php include '../common/footer.php'; ?>
-  </footer>
+
 </body>
 </html>
