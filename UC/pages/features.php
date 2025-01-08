@@ -64,7 +64,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Support Services</h5>
                     <p class="card-text">Find assistance for administrative tasks, document submission, and more.</p>
-                    <a href="support.html" class="btn custom-btn">Get Support</a>
+                    <a href="support.php" class="btn custom-btn">Get Support</a>
                 </div>
             </div>
         </div>
